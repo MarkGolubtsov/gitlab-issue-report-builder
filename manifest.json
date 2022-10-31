@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "Git lab trainingtask task issues reports",
+  "version": "0.0.1",
+  "content_scripts": [
+    {
+      "matches": [ "https://git.qulix.com/*" ],
+      "js": [ "app.js" ]
+    }
+  ]
+}
