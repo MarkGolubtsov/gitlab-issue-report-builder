@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "content_scripts": [
     {
-      "matches": [ "https://git.qulix.com/*" ],
-      "js": [ "app.js" ]
+      "matches": [ "https://git.qulix.com/*/*/-/issues*" ],
+      "js": [ "app.js", "vendors.js" ]
     }
   ]
 }
