@@ -4,8 +4,19 @@ module.exports = {
     entry: {
         app: path.join(__dirname, 'src', 'index.tsx'),
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    },
     output: {
-        filename: "app.js",
+        filename: '[name].js',
         path: path.resolve(__dirname, './build')
     },
     resolve: {

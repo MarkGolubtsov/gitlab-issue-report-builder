@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {Modal} from "antd";
-import ReportBuilderForm from "app/view/ReportBuilderForm";
+import ReportBuilder from "app/view/ReportBuilder";
 
 import './App.less';
 
-const TRIGGER_KEY = 'k';
+const TRIGGER_KEY = 'r';
 
 export default function App() {
     const [visible, setVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function App() {
 
     return (
         <Modal destroyOnClose footer={null} open={visible} title='Git lab issues report' onCancel={handleClose}>
-            <ReportBuilderForm/>
+            <ReportBuilder/>
         </Modal>
     )
 
