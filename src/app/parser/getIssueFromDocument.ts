@@ -9,7 +9,7 @@ export default function getIssueFromDocument(): Issue[] {
 
     return issuesElements.map((issue) => {
         const title = issue.getElementsByClassName(GIT_LAB_ISSUE_TITLE_CLASS_NAME)[0].textContent.trim();
-        const href = issue.getElementsByClassName(GIT_LAB_ISSUE_TITLE_CLASS_NAME)[0].getAttribute('href');
+        const href =  window.location.origin + issue.getElementsByClassName(GIT_LAB_ISSUE_TITLE_CLASS_NAME)[0].getAttribute('href');
         const number = issue.getElementsByClassName(GIT_LAB_ISSUE_NUMBER)[0].textContent.trim();
         return new Issue(title, number, href);
     });
