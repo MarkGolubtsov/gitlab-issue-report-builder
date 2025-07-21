@@ -1,10 +1,9 @@
 {
-  "name": "git-lab-issue-parser",
+  "name": "gitlab-issue-report-builder",
   "version": "1.0.0",
   "homepage": ".",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js --mode production"
   },
   "author": "",

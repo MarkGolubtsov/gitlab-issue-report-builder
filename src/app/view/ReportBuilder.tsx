@@ -5,9 +5,11 @@ import IssueNumberTitleFormatter from "app/format/IssueNumberTitleFormatter";
 import IssueFormatter from "app/format/IssueFormatter";
 import IssueList from "app/view/IssueList";
 import {IssueNumberTitleHrefFormatter} from "app/format/IssueNumberTitleHrefFormatter";
+import {IssueNumberTitleLabelsFormatter} from 'app/format/IssueNumberTitleLabelsFormatter';
 
 const issueNumberTitleFormatter = new IssueNumberTitleFormatter();
 const issueNumberTitleHrefFormatter = new IssueNumberTitleHrefFormatter();
+const issueNumberTitleLabelsFormatter = new IssueNumberTitleLabelsFormatter();
 
 export default function ReportBuilder() {
     const [issues] = useState(() => getIssueFromDocument());
@@ -25,6 +27,9 @@ export default function ReportBuilder() {
                 </Radio.Button>
                 <Radio.Button value={issueNumberTitleHrefFormatter}>
                     Number Title Href
+                </Radio.Button>
+                <Radio.Button value={issueNumberTitleLabelsFormatter}>
+                    Number Title Formatter
                 </Radio.Button>
             </Radio.Group>
 
