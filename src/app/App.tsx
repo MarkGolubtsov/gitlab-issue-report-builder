@@ -11,7 +11,7 @@ export default function App() {
         <>
             {
                 !visible &&
-                <Button className='report-trigger' onClick={() => setVisible(true)}>
+                <Button type='primary' className='report-trigger' onClick={() => setVisible(true)}>
                     Open report form
                 </Button>
             }
