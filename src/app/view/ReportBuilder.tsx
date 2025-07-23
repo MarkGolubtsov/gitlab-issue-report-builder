@@ -1,69 +1,60 @@
 import React, {useState} from "react";
 import getIssueFromDocument from "app/parser/getIssueFromDocument";
-import {Button, message, RadioChangeEvent, Select, Space} from "antd";
-import {IssueNumberTitleFormatter} from "app/format/IssueNumberTitleFormatter";
+import {Button, Select, Space} from "antd";
+import {IssueNumberTitleFormatter} from "app/format/item/IssueNumberTitleFormatter";
 import {IssueFormatter} from "app/format/IssueFormatter";
-import IssueList from "app/view/IssueList";
-import {IssueNumberTitleHrefFormatter} from "app/format/IssueNumberTitleHrefFormatter";
-import {IssueNumberTitleLabelsFormatter} from 'app/format/IssueNumberTitleLabelsFormatter';
+import ReportPreview from "app/view/ReportPreview";
+import {IssueNumberTitleHrefFormatter} from "app/format/item/IssueNumberTitleHrefFormatter";
+import {IssueNumberTitleLabelsFormatter} from 'app/format/item/IssueNumberTitleLabelsFormatter';
+import {SimpleListIssueFormat} from 'app/format/list/SimpleListIssueFormat';
 
-const AVAILABLE_FORMATTERS: IssueFormatter[] = [
+const AVAILABLE_ITEM_FORMATTERS: IssueFormatter[] = [
     new IssueNumberTitleFormatter(),
     new IssueNumberTitleHrefFormatter(),
     new IssueNumberTitleLabelsFormatter()
 ]
 
-export default function ReportBuilder() {
+interface ReportBuilderProps {
+    onBuild: (report: string) => void;
+}
+
+export default function ReportBuilder(props: ReportBuilderProps) {
+    const {onBuild} = props;
+
     const [issues] = useState(getIssueFromDocument);
-    const [formatter, setFormatter] = useState<IssueFormatter>(AVAILABLE_FORMATTERS[0]);
+    const [itemFormatter, setItemFormatter] = useState<IssueFormatter>(AVAILABLE_ITEM_FORMATTERS[0]);
 
-    const [messageApi, contextHolder] = message.useMessage();
+    const selectOptions = AVAILABLE_ITEM_FORMATTERS.map(it => ({label: it.name, value: it.name}));
+    const listFormatter = SimpleListIssueFormat.build(itemFormatter);
 
-    const selectOptions = AVAILABLE_FORMATTERS.map(it => ({label: it.name, value: it.name}));
+    const report = listFormatter.format(issues);
 
     return (
         <Space direction='vertical'>
-            {contextHolder}
             <Button type='primary' onClick={handleCopy}>
                 Скопировать
             </Button>
 
             <div style={{width: '300px'}}>
                 <Select
-                    value={formatter.name}
+                    value={itemFormatter.name}
                     size='large'
                     style={{width: '100%'}}
                     options={selectOptions}
                     onChange={handleChangeFilter}/>
             </div>
 
-            <IssueList
-                formatter={formatter}
-                issues={issues}/>
+            <ReportPreview report={report}/>
         </Space>
     )
 
     function handleChangeFilter(name: string) {
-        const formatterByName = AVAILABLE_FORMATTERS.find(it => it.name === name);
+        const formatterByName = AVAILABLE_ITEM_FORMATTERS.find(it => it.name === name);
 
-        setFormatter(formatterByName)
-    }
-
-    function handleChangeFormatter(e: RadioChangeEvent) {
-        setFormatter(e.target.value)
+        setItemFormatter(formatterByName)
     }
 
     function handleCopy() {
-        const copyData = issues.reduce((acc, issue) => acc + formatter.format(issue) + '\n', '');
-
-        navigator.clipboard.writeText(copyData)
-            .then(() => {
-                messageApi.success('Задачи скопированы в буфер обмена.')
-            })
-            .catch((er) => {
-                console.log('ERROR: ' + JSON.stringify(er));
-
-                messageApi.error(`Произошла ошибка с копированием`)
-            })
+        onBuild(report);
     }
 }
