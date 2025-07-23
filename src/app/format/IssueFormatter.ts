@@ -1,6 +1,6 @@
 import {Issue} from "app/model/Issue";
 
-export default interface IssueFormatter {
+export interface IssueFormatter {
     name: string;
 
     format(issue: Issue): string

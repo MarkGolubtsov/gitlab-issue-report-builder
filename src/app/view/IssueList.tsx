@@ -1,7 +1,7 @@
 import React from "react";
 import {Issue} from "app/model/Issue";
 import {Space, Typography} from "antd";
-import IssueFormatter from "app/format/IssueFormatter";
+import {IssueFormatter} from "app/format/IssueFormatter";
 
 interface IssuesFieldProps {
     formatter: IssueFormatter;

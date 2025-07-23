@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import getIssueFromDocument from "app/parser/getIssueFromDocument";
 import {Button, message, RadioChangeEvent, Select, Space} from "antd";
-import IssueNumberTitleFormatter from "app/format/IssueNumberTitleFormatter";
-import IssueFormatter from "app/format/IssueFormatter";
+import {IssueNumberTitleFormatter} from "app/format/IssueNumberTitleFormatter";
+import {IssueFormatter} from "app/format/IssueFormatter";
 import IssueList from "app/view/IssueList";
 import {IssueNumberTitleHrefFormatter} from "app/format/IssueNumberTitleHrefFormatter";
 import {IssueNumberTitleLabelsFormatter} from 'app/format/IssueNumberTitleLabelsFormatter';
