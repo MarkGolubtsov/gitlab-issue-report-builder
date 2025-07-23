@@ -2,7 +2,7 @@
   "name": "gitlab-issue-report-builder",
   "version": "0.0.1",
   "homepage": ".",
-  "description": "",
+  "description": "Плагин для копирования данных gitlab issues в буфер обмена",
   "scripts": {
     "build": "vite build"
   },
