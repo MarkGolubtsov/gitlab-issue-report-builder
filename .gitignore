@@ -9,6 +9,7 @@ build
 custom.properties
 out
 logs
+dist
 node_modules
 .env.development
 .env.custom

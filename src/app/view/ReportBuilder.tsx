@@ -12,11 +12,14 @@ const issueNumberTitleHrefFormatter = new IssueNumberTitleHrefFormatter();
 const issueNumberTitleLabelsFormatter = new IssueNumberTitleLabelsFormatter();
 
 export default function ReportBuilder() {
-    const [issues] = useState(() => getIssueFromDocument());
+    const [issues] = useState(getIssueFromDocument);
     const [formatter, setFormatter] = useState<IssueFormatter>(issueNumberTitleFormatter);
+
+    const [messageApi, contextHolder] = message.useMessage();
 
     return (
         <Space direction='vertical'>
+            {contextHolder}
             <Button type='primary' onClick={handleCopy}>
                 Copy to clipboard
             </Button>
@@ -45,8 +48,15 @@ export default function ReportBuilder() {
 
     function handleCopy() {
         const copyData = issues.reduce((acc, issue) => acc + formatter.format(issue) + '\n', '');
+
         navigator.clipboard.writeText(copyData)
-            .then(() => message.success('Issues copied to clipboard'))
-            .catch((er) => message.error(`Error copied text, ${er}`))
+            .then(() => {
+                messageApi.success('Задачи скопированы в буфер обмена.')
+            })
+            .catch((er) => {
+                console.log('ERROR: ' + JSON.stringify(er));
+
+                messageApi.error(`Произошла ошибка с копированием`)
+            })
     }
 }
