@@ -22,3 +22,7 @@ development.env.js
 cicd/config/vaults
 .vscode
 vault-*.password
+
+# игнорируем всё в папке release
+/release/*
+!/release/*.zip
