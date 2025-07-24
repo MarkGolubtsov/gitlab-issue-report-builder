@@ -25,6 +25,7 @@
 
 ### Форма настройки отчета
 ![img.png](screenshots/report-builder.png)
+![img.png](screenshots/img.png)
 
 
 ## Кастомизация
