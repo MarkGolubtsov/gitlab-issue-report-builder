@@ -5,6 +5,6 @@ export class IssueNumberTitleLabelsFormatter implements IssueFormatter {
     name = 'Номер-заголовок-список-меток';
 
     format(issue: Issue): string {
-        return `${issue.number} ${issue.title} [${issue.labels.join(',')}]`
+        return `${issue.number} ${issue.title} [${issue.labels.join(', ')}]`
     }
 }

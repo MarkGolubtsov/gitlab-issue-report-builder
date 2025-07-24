@@ -7,7 +7,7 @@ interface ReportPreviewProps {
 export default function ReportPreview({report}: ReportPreviewProps) {
     return (
         <div style={{
-            maxHeight: 500,
+            maxHeight: 400,
             overflowY: 'auto',
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-word'

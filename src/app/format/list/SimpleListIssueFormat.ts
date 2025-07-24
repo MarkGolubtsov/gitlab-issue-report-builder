@@ -11,8 +11,4 @@ export class SimpleListIssueFormat extends IssueListFormatter {
     format(issues: Issue[]): string {
         return issues.map(it => this.itemFormatter.format(it)).join('\n');
     }
-
-    static build(issueFormat: IssueFormatter): IssueListFormatter {
-        return new SimpleListIssueFormat(issueFormat);
-    }
 }

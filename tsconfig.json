@@ -22,10 +22,14 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "app/*": ["./src/app/*"]
-    }
+      "app/*": [
+        "./src/app/*"
+      ]
+    },
+    "types": ["vite/client"]
   },
   "include": [
+    "env.d.ts",
     "src"
   ]
 }
