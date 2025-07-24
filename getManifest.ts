@@ -1,7 +1,7 @@
 import {defineManifest } from '@crxjs/vite-plugin'
 import pkg from './package.json'
 
-export default (matches: string[]) => defineManifest((env) => {
+export default (matches: string[]) => defineManifest(() => {
     return {
         manifest_version: 3,
         name: pkg.name,

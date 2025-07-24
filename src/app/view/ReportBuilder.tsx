@@ -7,7 +7,6 @@ import ReportPreview from "app/view/ReportPreview";
 import {IssueNumberTitleHrefFormatter} from "app/format/item/IssueNumberTitleHrefFormatter";
 import {IssueNumberTitleLabelsFormatter} from 'app/format/item/IssueNumberTitleLabelsFormatter';
 import {SimpleListIssueFormat} from 'app/format/list/SimpleListIssueFormat';
-import {IssueListFormatter} from 'app/format/IssueListFormatter';
 import {GroupByPriorityLabelIssueListFormatter} from 'app/format/list/GroupByPriorityLabelIssueListFormatter';
 
 const AVAILABLE_ITEM_FORMATTERS: IssueFormatter[] = [
